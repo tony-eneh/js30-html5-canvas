@@ -42,7 +42,8 @@
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
 
-        drawer2d.strokeStyle = '#bada55';
+        let degree = 0;
+        drawer2d.strokeStyle = `hsl(${degree}, 100%, 50%)`;
         drawer2d.lineWidth = 100;
         drawer2d.lineCap = 'round';
         // drawer2d.lineJoin = 'round';
@@ -63,6 +64,17 @@
             drawer2d.lineTo(e.offsetX, e.offsetY);
             drawer2d.stroke();
             [startX, startY] = [e.offsetX, e.offsetY];
+
+            /*change color for next draw*/
+            drawer2d.strokeStyle = `hsl(${degree}, 100%, 50%)`;
+            if (degree > 360) {
+                degree = 0;
+            } else {
+                degree++;
+            }
+
+
+
         }
 
         /*hook up event listeners*/
