@@ -32,6 +32,8 @@
     <script>
         const canvas = document.querySelector('canvas');
         let shouldDraw = false;
+        let direction = true;
+
         let startX, startY;
         const drawer2d = canvas.getContext('2d');
 
@@ -73,6 +75,17 @@
                 degree++;
             }
 
+            /*change stroke width for next draw*/
+            if (drawer2d.lineWidth >= 100 || drawer2d.lineWidth <= 1) {
+                direction = !direction;
+            }
+
+            if (direction) {
+                drawer2d.lineWidth = drawer2d.lineWidth + 1;
+            } else {
+                drawer2d.lineWidth = drawer2d.lineWidth - 1;
+
+            }
 
 
         }
